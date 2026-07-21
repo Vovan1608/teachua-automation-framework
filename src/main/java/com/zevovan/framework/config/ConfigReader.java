@@ -13,7 +13,7 @@ public class ConfigReader {
                              .getResourceAsStream("config.properties")) {
 
             if(input == null) {
-                throw new RuntimeException("Could not find file config.properties!");
+                throw new RuntimeException("Could not find the file config.properties!");
             }
 
             PROPERTIES.load(input);
@@ -24,10 +24,16 @@ public class ConfigReader {
     }
 
     public static String getProperty(String key) {
-        return PROPERTIES.getProperty(key);
+        String value = PROPERTIES.getProperty(key);
+
+        if (value == null || value.isBlank()) {
+            throw new RuntimeException("Missing property: " + key);
+        }
+
+        return value;
     }
 
     public static long getLongProperty(String key) {
-        return Long.parseLong(PROPERTIES.getProperty(key));
+        return Long.parseLong(getProperty(key));
     }
 }

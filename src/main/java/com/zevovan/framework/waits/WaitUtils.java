@@ -1,6 +1,7 @@
 package com.zevovan.framework.waits;
 
 import com.zevovan.framework.config.ConfigReader;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,19 +11,18 @@ import java.time.Duration;
 
 public class WaitUtils {
     private final WebDriverWait wait;
+    private static final Duration DURATION = Duration.ofSeconds(
+            ConfigReader.getLongProperty("timeout.element.wait"));
 
     public WaitUtils(WebDriver driver) {
-        Duration duration = Duration.ofSeconds(
-                ConfigReader.getLongProperty("timeout.element.wait"));
-
-        this.wait = new WebDriverWait(driver, duration);
+        this.wait = new WebDriverWait(driver, DURATION);
     }
 
-    public WebElement waitUntilVisible(WebElement element) {
-        return wait.until(ExpectedConditions.visibilityOf(element));
+    public WebElement waitUntilVisible(By locator) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    public WebElement waitUntilClickable(WebElement element) {
-        return wait.until(ExpectedConditions.elementToBeClickable(element));
+    public WebElement waitUntilClickable(By locator) {
+        return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 }
