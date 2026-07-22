@@ -35,12 +35,24 @@ public class SmokeTest extends BaseTest{
     }
 
     @Test
-    void openClubsPage() {
+    void openClubsPageFromHeader() {
         HomePage homePage = new HomePage(getDriver());
 
         homePage.open()
                 .getHeader()
-                .openClubsPage();
+                .openClubsPageFromHeader();
+
+        assertTrue(
+                getDriver().getCurrentUrl().contains("clubs")
+        );
+    }
+
+    @Test
+    void openClubsPageFromDetailsButton() {
+        HomePage homePage = new HomePage(getDriver());
+
+        homePage.open()
+                .openClubsPageFromDetailsButton();
 
         assertTrue(
                 getDriver().getCurrentUrl().contains("clubs")

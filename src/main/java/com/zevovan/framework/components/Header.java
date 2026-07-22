@@ -27,10 +27,6 @@ public class Header {
         private static final By SHOW_MAP_MODAL = By.className("show-map-button");
         private static final By SEARCH_INPUT = By.id("rc_select_82");
         private static final By ADVANCED_SEARCH_CLUBS_LINK = By.cssSelector("span[aria-label='search']");
-        private static final By DETAILS_BUTTON_CLUBS_LINK = By.className("details-button");
-        private static final By MORE_BUTTON_CLUBS_LINK = By.className("more-button");
-        private static final By CHALLENGE_LINK = By.className("materials-button");
-        private static final By DONATE_LINK = By.className("donate-button");
     }
 
     public HomePage openHomePage() {
@@ -39,7 +35,7 @@ public class Header {
         return new HomePage(driver);
     }
 
-    public ClubsPage openClubsPage() {
+    public ClubsPage openClubsPageFromHeader() {
         wait.waitUntilClickable(Locators.CLUBS_LINK).click();
 
         return new ClubsPage(driver);
