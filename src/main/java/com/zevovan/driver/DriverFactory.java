@@ -10,11 +10,14 @@ public class DriverFactory {
     public static WebDriver createDriver() {
         Browser browser = Browser.valueOf(ConfigReader.getProperty("browser").toUpperCase());
 
-        return switch (browser) {
+        WebDriver driver = switch (browser) {
             case CHROME -> new ChromeDriver();
             case FIREFOX -> new FirefoxDriver();
             case EDGE -> new EdgeDriver();
-            default -> throw new RuntimeException("Unknown browser: " + browser);
         };
+
+        driver.manage().window().maximize();
+
+        return driver;
     }
 }

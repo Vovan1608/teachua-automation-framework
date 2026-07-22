@@ -3,6 +3,7 @@ import com.zevovan.framework.pages.HomePage;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SmokeTest extends BaseTest{
     @Test
@@ -23,13 +24,26 @@ public class SmokeTest extends BaseTest{
     @Test
     void openHomePageTest() {
         HomePage homePage = new HomePage(getDriver())
-                .openHomePage();
+                .open();
 
         homePage.getHeader();
 
         assertEquals(
                 ConfigReader.getProperty("base.url"),
                 getDriver().getCurrentUrl()
+        );
+    }
+
+    @Test
+    void openClubsPage() {
+        HomePage homePage = new HomePage(getDriver());
+
+        homePage.open()
+                .getHeader()
+                .openClubsPage();
+
+        assertTrue(
+                getDriver().getCurrentUrl().contains("clubs")
         );
     }
 }
