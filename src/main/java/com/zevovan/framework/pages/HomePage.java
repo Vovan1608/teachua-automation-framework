@@ -1,5 +1,7 @@
 package com.zevovan.framework.pages;
 
+import com.zevovan.framework.components.modal.AddClubModal;
+import com.zevovan.framework.components.modal.LoginModal;
 import com.zevovan.framework.config.ConfigReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -22,6 +24,12 @@ public class HomePage extends BasePage{
         driver.get(ConfigReader.getProperty("base.url"));
 
         return this;
+    }
+
+    public LoginModal  openAddClubModal() {
+        wait.waitUntilClickable(Locators.ADD_CLUB_MODAL).click();
+
+        return new LoginModal(driver);
     }
 
     public ClubsPage openClubsPageFromDetailsButton() {

@@ -1,13 +1,13 @@
 package com.zevovan.framework.home;
 
-import com.zevovan.framework.config.ConfigReader;
+import com.zevovan.framework.components.modal.LoginModal;
 import com.zevovan.framework.core.BaseTest;
 import com.zevovan.framework.pages.HomePage;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class HomePageTest extends BaseTest {
@@ -19,19 +19,17 @@ public class HomePageTest extends BaseTest {
     }
 
     @Test
-    void openHomePageTest() {
-        homePage.getHeader();
+    @DisplayName("For guest should be appear login modal window.")
+    void openAddClubModal() {
+        LoginModal modal = homePage.openAddClubModal();
 
-        assertEquals(
-                ConfigReader.getProperty("base.url"),
-                getDriver().getCurrentUrl()
-        );
+        assertTrue(modal.isOpened());
     }
 
     @Test
+    @DisplayName("Should be linked to the clubs page.")
     void openClubsPageFromHeader() {
-       homePage.open()
-                .getHeader()
+       homePage.getHeader()
                 .openClubsPageFromHeader();
 
         assertTrue(
@@ -40,9 +38,9 @@ public class HomePageTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Should be linked to the clubs page.")
     void openClubsPageFromDetailsButton() {
-        homePage.open()
-                .openClubsPageFromDetailsButton();
+        homePage.openClubsPageFromDetailsButton();
 
         assertTrue(
                 getDriver().getCurrentUrl().contains("clubs")
@@ -50,9 +48,9 @@ public class HomePageTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Should be linked to the clubs page.")
     void openClubsPageFromMoreButton() {
-        homePage.open()
-                .openClubsPageFromMoreButton();
+        homePage.openClubsPageFromMoreButton();
 
         assertTrue(
                 getDriver().getCurrentUrl().contains("clubs")
@@ -60,9 +58,9 @@ public class HomePageTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Should be linked to the challenge page.")
     void openChallengePageFromHomePage() {
-        homePage.open()
-                .openChallengePageFromHomePage();
+        homePage.openChallengePageFromHomePage();
 
         assertTrue(
                 getDriver().getCurrentUrl().contains("challenge")
@@ -70,9 +68,9 @@ public class HomePageTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Should be linked to the payment page.")
     void openPaymentPageFromHomePage() {
-        homePage.open()
-                .openDonatePage();
+        homePage.openDonatePage();
 
         assertTrue(
                 getDriver().getCurrentUrl().contains("payment")
