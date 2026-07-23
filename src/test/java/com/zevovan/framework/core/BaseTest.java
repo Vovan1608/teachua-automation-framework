@@ -1,9 +1,11 @@
+package com.zevovan.framework.core;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import com.zevovan.driver.DriverFactory;
 
-public class BaseTest {
+public abstract class BaseTest {
     private WebDriver driver;
 
     protected WebDriver getDriver() {

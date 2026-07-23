@@ -37,13 +37,16 @@ public class HomePage extends BasePage{
     }
 
     public ChallengePage openChallengePageFromHomePage() {
-        wait.waitUntilClickable(Locators.CHALLENGE_LINK);
+        scrollTo(Locators.CHALLENGE_LINK);
+        wait.waitUntilClickable(Locators.CHALLENGE_LINK).click();
 
         return new ChallengePage(driver);
     }
 
-    public PaymentPage openPaymentPageFromHomePage() {
+    public PaymentPage openDonatePage() {
+        scrollTo(Locators.DONATE_LINK);
         wait.waitUntilClickable(Locators.DONATE_LINK).click();
+        browser.switchToNewTab();
 
         return new PaymentPage(driver);
     }
