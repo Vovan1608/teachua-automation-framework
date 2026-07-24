@@ -10,13 +10,9 @@ public abstract class BaseDropdown extends BaseComponent {
         super(driver);
     }
 
-    protected abstract By getDropdown();
-
     protected abstract By getOptions();
 
     public void select(String value) {
-        click(getDropdown());
-
         for (WebElement option : wait.waitUntilVisibleAll(getOptions())) {
             if (option.getText().trim().equals(value)) {
                 option.click();

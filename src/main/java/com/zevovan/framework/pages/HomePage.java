@@ -1,6 +1,5 @@
 package com.zevovan.framework.pages;
 
-import com.zevovan.framework.components.modal.AddClubModal;
 import com.zevovan.framework.components.modal.LoginModal;
 import com.zevovan.framework.config.ConfigReader;
 import org.openqa.selenium.By;
