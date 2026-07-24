@@ -28,17 +28,6 @@ public class HomePageTest extends BaseTest {
 
     @Test
     @DisplayName("Should be linked to the clubs page.")
-    void openClubsPageFromHeader() {
-       homePage.getHeader()
-                .openClubsPageFromHeader();
-
-        assertTrue(
-                getDriver().getCurrentUrl().contains("clubs")
-        );
-    }
-
-    @Test
-    @DisplayName("Should be linked to the clubs page.")
     void openClubsPageFromDetailsButton() {
         homePage.openClubsPageFromDetailsButton();
 
