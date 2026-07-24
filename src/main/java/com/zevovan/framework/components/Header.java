@@ -2,17 +2,13 @@ package com.zevovan.framework.components;
 
 import com.zevovan.framework.pages.ClubsPage;
 import com.zevovan.framework.pages.HomePage;
-import com.zevovan.framework.waits.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class Header {
-    private final WebDriver driver;
-    private final WaitUtils wait;
+public class Header extends BaseComponent{
 
     public Header (WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WaitUtils(driver);
+        super(driver);
     }
 
     private static class Locators {
@@ -30,13 +26,13 @@ public class Header {
     }
 
     public HomePage openHomePage() {
-        wait.waitUntilClickable(Locators.HOME_PAGE_LINK).click();
+        click(Locators.HOME_PAGE_LINK);
 
         return new HomePage(driver);
     }
 
     public ClubsPage openClubsPageFromHeader() {
-        wait.waitUntilClickable(Locators.CLUBS_LINK).click();
+        click(Locators.CLUBS_LINK);
 
         return new ClubsPage(driver);
     }

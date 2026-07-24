@@ -27,33 +27,33 @@ public class HomePage extends BasePage{
     }
 
     public LoginModal  openAddClubModal() {
-        wait.waitUntilClickable(Locators.ADD_CLUB_MODAL).click();
+        click(Locators.ADD_CLUB_MODAL);
 
         return new LoginModal(driver);
     }
 
     public ClubsPage openClubsPageFromDetailsButton() {
-        wait.waitUntilClickable(Locators.DETAILS_BUTTON_CLUBS_LINK).click();
+        click(Locators.DETAILS_BUTTON_CLUBS_LINK);
 
         return new ClubsPage(driver);
     }
 
     public ClubsPage openClubsPageFromMoreButton() {
-        wait.waitUntilClickable(Locators.MORE_BUTTON_CLUBS_LINK).click();
+        click(Locators.MORE_BUTTON_CLUBS_LINK);
 
         return new ClubsPage(driver);
     }
 
     public ChallengePage openChallengePageFromHomePage() {
         scrollTo(Locators.CHALLENGE_LINK);
-        wait.waitUntilClickable(Locators.CHALLENGE_LINK).click();
+        click(Locators.CHALLENGE_LINK);
 
         return new ChallengePage(driver);
     }
 
     public PaymentPage openDonatePage() {
         scrollTo(Locators.DONATE_LINK);
-        wait.waitUntilClickable(Locators.DONATE_LINK).click();
+        click(Locators.DONATE_LINK);
         browser.switchToNewTab();
 
         return new PaymentPage(driver);
