@@ -76,4 +76,5 @@ public class HomePageTest extends BaseTest {
                 getDriver().getCurrentUrl().contains("payment")
         );
     }
+
 }

@@ -32,7 +32,7 @@ public class LoginModal extends BaseModal{
     }
 
     public void logIn(By locator) {
-        wait.waitUntilClickable(Locators.LOGIN_BUTTON);
+        click(Locators.LOGIN_BUTTON);
     }
 
 }

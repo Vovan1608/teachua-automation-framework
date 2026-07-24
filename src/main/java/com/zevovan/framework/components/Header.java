@@ -1,5 +1,6 @@
 package com.zevovan.framework.components;
 
+import com.zevovan.framework.components.dropdown.ChallengeDropdown;
 import com.zevovan.framework.pages.ClubsPage;
 import com.zevovan.framework.pages.HomePage;
 import org.openqa.selenium.By;
@@ -35,5 +36,11 @@ public class Header extends BaseComponent{
         click(Locators.CLUBS_LINK);
 
         return new ClubsPage(driver);
+    }
+
+    public ChallengeDropdown openChallengeDropdown() {
+        click(Locators.CHALLENGE_DROPDOWN);
+
+        return new ChallengeDropdown(driver);
     }
 }
